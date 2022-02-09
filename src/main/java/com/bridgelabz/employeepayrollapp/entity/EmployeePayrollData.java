@@ -1,4 +1,4 @@
-package com.bridgelabz.employeepayrollapp.Entity;
+package com.bridgelabz.employeepayrollapp.entity;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDTO;
 
