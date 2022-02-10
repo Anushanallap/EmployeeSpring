@@ -25,7 +25,7 @@ public class EmployeePayrollController {
     @RequestMapping(value = {"", "/", "/get"})
     public ResponseEntity<ResponseDTO> getEmployeePayrollData() {
         EmployeePayrollData employeePayrollData = null;
-        employeePayrollData =  new EmployeePayrollData(1,new EmployeePayrollDTO("Anusha",3000));
+        employeePayrollData =  new EmployeePayrollData(new EmployeePayrollDTO("Anusha",3000));
         ResponseDTO respDTO = new ResponseDTO("Get Call Success", employeePayrollData);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
