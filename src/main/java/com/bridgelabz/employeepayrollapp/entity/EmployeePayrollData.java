@@ -23,13 +23,12 @@ public @Data class EmployeePayrollData {
     private String name;
     private long salary;
     private String gender;
-    private LocalDate startDate;
+    private String startDate;
     private String note;
     private String profilePic;
 
     @ElementCollection
     @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
-
     @Column(name = "department")
     private List<String> departments;
 

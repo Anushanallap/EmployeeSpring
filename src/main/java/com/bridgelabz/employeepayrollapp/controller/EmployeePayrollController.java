@@ -12,11 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/employeepayrollservice")
 @Slf4j
+@CrossOrigin("http://localhost:4200")
 public class EmployeePayrollController {
     @Autowired
     private IEmployeePayrollService employeePayrollService;
@@ -24,8 +26,7 @@ public class EmployeePayrollController {
     //http://localhost:8080/employeepayrollservice/get
     @RequestMapping(value = {"", "/", "/get"})
     public ResponseEntity<ResponseDTO> getEmployeePayrollData() {
-        EmployeePayrollData employeePayrollData = null;
-        employeePayrollData =  new EmployeePayrollData(new EmployeePayrollDTO("Anusha",3000));
+        List<EmployeePayrollData> employeePayrollData = employeePayrollService.getEmployeePayrollData();
         ResponseDTO respDTO = new ResponseDTO("Get Call Success", employeePayrollData);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
@@ -37,6 +38,16 @@ public class EmployeePayrollController {
         ResponseDTO respDTO = new ResponseDTO("Get Call Success for id:", employeePayrollData);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
+
+    //http://localhost:8080/employeepayrollservice/dept/Sales
+    @GetMapping("/dept/{dept}")
+    public ResponseEntity<ResponseDTO> getDepartment(@PathVariable("dept") String dept){
+        List<EmployeePayrollData> empDataList = null;
+        empDataList = employeePayrollService.getEmployeeByDepartment(dept);
+        ResponseDTO respDTO = new ResponseDTO("Get Call Success", empDataList);
+        return new ResponseEntity<ResponseDTO> (respDTO, HttpStatus.OK);
+    }
+
 
     //http://localhost:8080/employeepayrollservice/create + JSON
     @PostMapping("/create")

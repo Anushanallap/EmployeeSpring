@@ -22,25 +22,23 @@ public @ToString class EmployeePayrollDTO {
 
     @Pattern(regexp = "male|female", message = "Gender needs to be male or female")
     public String gender;
+//
+//    @JsonFormat(pattern = "dd-MM-yyyy")
+//    @NotNull (message = "startDate should Not be Empty")
+//    @PastOrPresent (message = "startDate should be past or todays date")
+    public String startDate;
 
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    @NotNull (message = "startDate should Not be Empty")
-    @PastOrPresent (message = "startDate should be past or todays date")
-    public LocalDate startDate;
-
-    @NotBlank(message = "Note cannot be Empty")
     public  String note;
 
-   // @NotBlank(message = "profilePic cannot be Empty")
+   //@NotBlank(message = "profilePic cannot be Empty")
     public String profilePic;
 
-    @NotNull(message = "department should not be Empty")
     public List<String> departments;
 
 
 
-    public EmployeePayrollDTO(String anusha, int i) {
-    }
+//    public EmployeePayrollDTO(String anusha, int i) {
+//    }
 }
 
 
